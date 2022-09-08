@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  # db:
+  #   image: mariadb:latest
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: rootpassword
+  #     MYSQL_USER: user
+  #     MYSQL_PASSWORD: password
+  #     MYSQL_DATABASE: database    
+  server:
+    build: .     
+    restart: on-failure
+    ports:
+      - 9000:9000
+    volumes:
+      - ./:/dbosrv
+    stdin_open: true
+    tty: true
+  # phpmyadmin:
+  #   image: phpmyadmin/phpmyadmin
+  #   ports:
+  #     -  8080:80
