@@ -1,4 +1,4 @@
-# ![logo](https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/ISO_C%2B%2B_Logo.svg/1200px-ISO_C%2B%2B_Logo.svg.png) 
+# ![logo](https://hpscds.com/wp-content/uploads/2019/04/c-plus-plus-logo.png) 
 
 * [Requirements](#requirements)
 * [Install](#install)
