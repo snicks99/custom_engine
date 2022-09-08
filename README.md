@@ -2,10 +2,6 @@
 
 * [Requirements](#requirements)
 * [Install](#install)
-* [Client](#client)
-* [Server](#server)
-* [Client Options](#client-options)
-* [Tools](#tools)
   
 
 ## Requirements
@@ -39,80 +35,6 @@
 
 - Select source and build folders, press `Configure` button.
 
-- source folder is DBOZenkai_2.0 and build should be DBOZenkai_2.0/build/x (x can be client or server).
-
-**Remember build folder are different for client and server**
-
-- Select your VS version and platform:
-
-- Win32 for client.
-
-- x64 or empty for server.
-
-### Client
-
-- In CMAKE Expand `DBO`.
-
-- Check `DBO_CLIENT` (Is checked by default) and (DBO_TOOLS) if you want add Tools.
-
-- In `DBO_CLIENT_DIR` select your DBO client folder (this is the output path, where the .exe will be created).
-
-- Press `Configure` again and `Generate`.
-
-### Server
-
-- In CMAKE Expand `DBO`.
-
-- Check `DBO_SEVER` and uncheck others.
-
-- Press `Generate`.
-
-## Client options
-
-**You can make a change and regenerate solution at any moment only pressing `Generate` button**
-
-- Expand `OPTIONS` and select your configuration.
-
-- `DATA_MODE`: Select data mode (XML, ENC, BIN), by default select BIN
-
-- `NET_SERVER_SYNC`: Checked for normal mode, unchecked for virtual server.
-
-- `NTL_WORLD_TOOL_MODE`: Checked for compile NtlWE tool (Saber), uncheck for compile client.
-
-- `USE_MUTEX_CHECK`: Checked restrict the client to a single instance.
-
-- `USE_PACK_DATA`: Checked use packed client, unchecked use a unpacket client.
-
-## Tools
-
-- Runing Tools
-
-- `Chaoz`
-
-- `GuiDevTool`
-
-- `Launcher`
-
-- `NtlWE`
-
-- `PackEditor`
-
-- `PathServerManager`
-
-- `SimplePatcher`
-
-- `Table Edior`
-
-- `TSTool`
-
-- `Venus`
-
-- `MrPopo`
-
-- `ModelTool2`
-
-- `2DParticleEditor`
-
 # Clang Format
 
 To keep a consistent code style pattern, this project relies on LLVM Clang format tool.
@@ -130,7 +52,3 @@ Here are the instructions to make it work on your machine:
 - Restart Visual Studio and enable "Format on save option" from the Clang Power tools settings:
 
 ![Format on Save option](./images/FormatOnSave.JPG)
-
-# DBO STL
-
-- Lib to improve client performance
