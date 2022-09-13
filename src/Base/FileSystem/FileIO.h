@@ -9,11 +9,11 @@ using FileHandle = FILE*;
 
 #else
 
-#    if DBL_PLATFORM == DBL_PLATFORM_WINDOWS
+#    if MGE_PLATFORM == MGE_PLATFORM_WINDOWS
 
 using FileHandle = HANDLE;
 
-#    elif DBL_PLATFORM == DBL_PLATFORM_UNIX
+#    elif MGE_PLATFORM == MGE_PLATFORM_UNIX
 
 using FileHadle = int;
 

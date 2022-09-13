@@ -1,5 +1,5 @@
 #include "FileSystem/File.h"
-#include "Debug/DBLAssert.h"
+#include "Debug/MGEAssert.h"
 
 #include <boost/filesystem.hpp>
 

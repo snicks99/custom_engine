@@ -1,7 +1,7 @@
 #include "OS/OS.h"
-#include "Debug/DBLAssert.h"
+#include "Debug/MGEAssert.h"
 
-#if DBL_PLATFORM == DBL_PLATFORM_WINDOWS
+#if MGE_PLATFORM == MGE_PLATFORM_WINDOWS
 
 #    include <timeapi.h>
 
@@ -39,31 +39,31 @@ void OS::Initialize()
     HMODULE hntdll = GetModuleHandle( "ntdll.dll" );
     if ( hntdll && (void*)GetProcAddress( hntdll, "wine_get_version" ) )
     {
-        DBL_LOG_MESSAGE( "OS: WINE" );
+        MGE_LOG_MESSAGE( "OS: WINE" );
     }
     else if ( IsWindows11OrGreater() )
     {
-        DBL_LOG_MESSAGE( "OS: Win11" );
+        MGE_LOG_MESSAGE( "OS: Win11" );
     }
     else if ( IsWindows10OrGreater() )
     {
-        DBL_LOG_MESSAGE( "OS: Win10" );
+        MGE_LOG_MESSAGE( "OS: Win10" );
     }
     else if ( IsWindows8Point1OrGreater() )
     {
-        DBL_LOG_MESSAGE( "OS: Win8.1" );
+        MGE_LOG_MESSAGE( "OS: Win8.1" );
     }
     else if ( IsWindows8OrGreater() )
     {
-        DBL_LOG_MESSAGE( "OS: Win8" );
+        MGE_LOG_MESSAGE( "OS: Win8" );
     }
     else if ( IsWindows7OrGreater() || IsWindows7SP1OrGreater() )
     {
-        DBL_LOG_MESSAGE( "OS: Win7" );
+        MGE_LOG_MESSAGE( "OS: Win7" );
     }
     else
     {
-        DBL_LOG_MESSAGE( "OS: Unknown - unsupported Windows version" );
+        MGE_LOG_MESSAGE( "OS: Unknown - unsupported Windows version" );
     }
 
     // set minimum resolution for periodic timers, otherwise Sleep(n) may wait at least as

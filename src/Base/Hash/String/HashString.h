@@ -3,6 +3,7 @@
 
 #include "Common/Platform.h"
 #include "Containers/BasicString.h"
+#include "Hash/Hash.h"
 #include "Hash/String/HashDJB2.h"
 #include "Hash/String/HashCRC32.h"
 #include "Utilities/Utils.h"

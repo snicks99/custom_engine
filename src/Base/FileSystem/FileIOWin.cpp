@@ -2,7 +2,7 @@
 #include "FileSystem/FileIO.h"
 #include "Debug/PrintErr.h"
 
-#if ENABLE_STL_FILE_SYSTEM == 0 && DBL_PLATFORM == DBL_PLATFORM_WINDOWS
+#if ENABLE_STL_FILE_SYSTEM == 0 && MGE_PLATFORM == MGE_PLATFORM_WINDOWS
 
 namespace FileIO
 {

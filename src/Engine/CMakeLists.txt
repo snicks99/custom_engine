@@ -22,11 +22,11 @@ GroupSources(${CMAKE_CURRENT_SOURCE_DIR})
 
 add_definitions(-DTRINITY_API_EXPORT_COMMON)
 
-add_library(DBL
+add_library(Engine
   ${PRIVATE_SOURCES}
 )
 
-# Do NOT add any extra include directory here, as we don't want the DBL
+# Do NOT add any extra include directory here, as we don't want the Engine
 # library to depend on anything else than TC deps, and itself.
 # This way we ensure that if either a PR does that without modifying this file,
 # a compile error will be generated, either this file will be modified so it
@@ -41,7 +41,7 @@ CollectIncludeDirectories(
   # Exclude
   ${CMAKE_CURRENT_SOURCE_DIR}/PrecompiledHeaders)
 
-target_include_directories(DBL
+target_include_directories(Engine
   PUBLIC
     # Provide the binary dir for all child targets
     ${CMAKE_BINARY_DIR}
@@ -49,26 +49,26 @@ target_include_directories(DBL
   PRIVATE
     ${CMAKE_CURRENT_BINARY_DIR})
 
-target_link_libraries(DBL
+target_link_libraries(Engine
   PRIVATE
     trinity-core-interface
   PUBLIC
     Base)
 
-# add_dependencies(DBL revision_data.h)
+# add_dependencies(Engine revision_data.h)
 
-set_target_properties(DBL
+set_target_properties(Engine
     PROPERTIES
       FOLDER
-        "DBO")
+        "Engine")
 
 if(BUILD_SHARED_LIBS)
   if(UNIX)
-    install(TARGETS DBL
+    install(TARGETS Engine
       LIBRARY
         DESTINATION lib)
   elseif(WIN32)
-    install(TARGETS DBL
+    install(TARGETS Engine
       RUNTIME
         DESTINATION "${CMAKE_INSTALL_PREFIX}")
   endif()
@@ -76,5 +76,5 @@ endif()
 
 # Generate precompiled header
 if(USE_COREPCH)
-  add_cxx_pch(DBL ${PRIVATE_PCH_HEADER})
+  add_cxx_pch(Engine ${PRIVATE_PCH_HEADER})
 endif()

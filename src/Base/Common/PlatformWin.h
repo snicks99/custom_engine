@@ -11,7 +11,7 @@
  Separator
  */
 
-#if DBL_PLATFORM == DBL_PLATFORM_WINDOWS
+#if MGE_PLATFORM == MGE_PLATFORM_WINDOWS
 
 #    include <windows.h>
 #    include <float.h>
@@ -27,9 +27,9 @@
 #    define FORCE_INLINE __forceinline
 
 #    if BUILD_TARGET >= BUILD_TARGET_DEBUG
-#        define DBL_DEBUG_BREAK() __debugbreak()
+#        define MGE_DEBUG_BREAK() __debugbreak()
 #    else
-#        define DBL_DEBUG_BREAK()
+#        define MGE_DEBUG_BREAK()
 #    endif
 
 #    define MAX_DIR_PATH MAX_PATH

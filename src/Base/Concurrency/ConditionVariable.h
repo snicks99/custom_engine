@@ -4,7 +4,7 @@
 #include "Common/Platform.h"
 #include "Concurrency/Mutex.h"
 #include "Concurrency/UniqueLock.h"
-#include "Debug/DBLAssert.h"
+#include "Debug/MGEAssert.h"
 
 #include <condition_variable>
 
@@ -66,7 +66,7 @@ inline ConditionVariable::~ConditionVariable() noexcept
 
 inline void ConditionVariable::Wait( UniqueLock<Mutex>& guard )
 {
-    DBL_ASSERT( guard.OwnsLock(), "Mutex must be locked and UniqueLock must own it" );
+    MGE_ASSERT( guard.OwnsLock(), "Mutex must be locked and UniqueLock must own it" );
 
     std::unique_lock<std::mutex> lock( guard.GetMutex()->mutex, std::adopt_lock_t() );
     cv.wait( lock );

@@ -1,11 +1,15 @@
 #include "OS/OS.h"
-#include "Debug/DBLAssert.h"
+#include "Debug/MGEAssert.h"
 
-#if DBL_PLATFORM == DBL_PLATFORM_UNIX
+#if MGE_PLATFORM == MGE_PLATFORM_UNIX
 
 void OS::Initialize()
 {
-    DBL_LOG_MESSAGE( "OS: UNIX" );
+    MGE_LOG_MESSAGE( "OS: UNIX" );
+}
+
+void OS::Finalize()
+{
 }
 
 #endif

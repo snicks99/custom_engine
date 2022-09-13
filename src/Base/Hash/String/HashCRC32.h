@@ -2,6 +2,7 @@
 #define HASH_CRC32_H
 
 #include "Common/Platform.h"
+#include "Hash/Hash.h"
 #include "Utilities/Utils.h"
 
 CONSTEXPR_INLINE uint32 crc32_tab[256] = {

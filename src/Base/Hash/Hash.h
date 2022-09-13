@@ -1,7 +1,13 @@
 #ifndef HASH_H
 #define HASH_H
 
-#include "Common/Types.h"
+#include "Common/Platform.h"
+
+using HashID = word_t;
+
+CONSTEXPR_INLINE HashID INVALID_HASH_ID{ std::numeric_limits<HashID>::max() };
+
+#if 0
 
 // Base hash type
 // Any child (template specialized) structure
@@ -52,12 +58,12 @@ struct Hash<uint32>
 
     bool Compare( const uint32 i1, const uint32 i2 ) const
     {
-        return ( i1 == i2 );
+        return i1 == i2;
     }
 };
 
 template<typename T>
-inline void HashCombine( std::size_t& seed, T const& val )
+inline void HashCombine( std::size_t& seed, const T& val )
 {
     seed ^= std::hash<T>()( val ) + 0x9E3779B9 + ( seed << 6 ) + ( seed >> 2 );
 }
@@ -81,5 +87,7 @@ namespace std
         }
     };
 }    // namespace std
+
+#endif
 
 #endif

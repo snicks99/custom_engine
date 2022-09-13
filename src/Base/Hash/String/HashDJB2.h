@@ -1,6 +1,7 @@
 #ifndef HASH_DJB2_H
 #define HASH_DJB2_H
 
+#include "Hash/Hash.h"
 #include "Utilities/Utils.h"
 
 namespace DJB2

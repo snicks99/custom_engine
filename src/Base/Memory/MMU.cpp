@@ -1,6 +1,6 @@
 #include "Memory/MMU.h"
 
-#if 1
+#if ENABLE_DLMALLOC
 
 #    include "Memory/Allocator/DLMalloc.h"
 

@@ -12,24 +12,6 @@
  Separator
  */
 
-#ifndef M_PI
-#    define M_PI 3.14159265358979323846
-#endif
-
-#ifndef M_PI_4
-#    define M_PI_4 0.785398163397448309616
-#endif
-
-template<typename T>
-inline void Clamp( T& val, const T& min, const T& max )
-{
-    val = std::max( min, std::max( val, max ) );
-}
-
-/****************************************************************************
- Separator
- */
-
 #define STRINGIZE( s ) #s
 
 /****************************************************************************
@@ -58,50 +40,6 @@ inline uint32 PAIR64_HIGH( uint64 v )
 {
     return static_cast<uint32>( v >> 32 );
 }
-
-/****************************************************************************
- Separator
- */
-
-struct PtrLess
-{
-  public:
-    template<typename T>
-    CONSTEXPR_INLINE bool operator()( const T& l, const T& r ) const
-    {
-        return std::addressof( *l ) < std::addressof( *r );
-    }
-};
-
-struct PtrGreater
-{
-  public:
-    template<typename T>
-    CONSTEXPR_INLINE bool operator()( const T& l, const T& r ) const
-    {
-        return std::addressof( *l ) > std::addressof( *r );
-    }
-};
-
-struct PairSecondLess
-{
-  public:
-    template<typename T>
-    CONSTEXPR_INLINE bool operator()( const T& l, const T& r ) const
-    {
-        return l.second < r.second;
-    }
-};
-
-struct PairSecondGreater
-{
-  public:
-    template<typename T>
-    CONSTEXPR_INLINE bool operator()( const T& l, const T& r ) const
-    {
-        return l.second > r.second;
-    }
-};
 
 /****************************************************************************
  Separator

@@ -1,10 +1,7 @@
 #include "Common/BaseIO.h"
-#include "Stream/FileStream.h"
 #include "Stream/StreamDefines.h"
-#include "FileSystem/Pack/RscPakMgr.h"
-#include "FileSystem/Pack/RscPakDefines.h"
-#include "FileSystem/Pak/PAKFile.h"
-#include "Debug/DBLAssert.h"
+#include "Stream/FileStream.h"
+#include "Debug/MGEAssert.h"
 
 /************************************************************************/
 /*                                  Buffer                              */
@@ -29,11 +26,9 @@ FileStream::~FileStream()
 
 bool8 FileStream::Open( const char8* filePath, uint32 mode, Disposition disposition /*= Disposition::NONE*/ )
 {
-    bool8 isOpen{ false };
-
     mFile = new File{};
 
-    isOpen = mFile->Open( filePath, mode, disposition );
+    const bool8 isOpen{ mFile->Open( filePath, mode, disposition ) };
     if ( isOpen )
     {
         mBuffer.resize( FILE_STREAM_BUFFER_SIZE );
@@ -46,23 +41,6 @@ bool8 FileStream::Open( const char8* filePath, uint32 mode, Disposition disposit
         {
             WriteBufferChunk();
         }
-    }
-
-    return isOpen;
-}
-
-bool8 FileStream::OpenPak( uint32 pak, const char8* filePath )
-{
-    bool8 isOpen{ false };
-
-    mFile = new PAKFile{};
-
-    isOpen = ( (PAKFile*)mFile.get() )->Open( pak, filePath );
-    if ( isOpen )
-    {
-        mBuffer.resize( FILE_STREAM_BUFFER_SIZE );
-
-        ReadBufferChunk();
     }
 
     return isOpen;

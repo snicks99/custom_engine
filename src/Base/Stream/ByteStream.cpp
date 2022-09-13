@@ -1,5 +1,5 @@
 #include "Stream/ByteStream.h"
-#include "Debug/DBLAssert.h"
+#include "Debug/MGEAssert.h"
 
 void ByteStream::resize( word_t size )
 {
@@ -61,7 +61,7 @@ word_t ByteStream::read( void* dst, word_t cnt )
 
     if ( mRPos + cnt > size() )
     {
-        DBL_ERROR( false, "ByteStream overflow" );
+        MGE_ERROR( false, "ByteStream overflow" );
         return 0;
     }
 
@@ -76,7 +76,7 @@ void ByteStream::read_skip( word_t skip )
 {
     if ( mRPos + skip > size() )
     {
-        DBL_ERROR( false, "ByteStream overflow" );
+        MGE_ERROR( false, "ByteStream overflow" );
         return;
     }
 

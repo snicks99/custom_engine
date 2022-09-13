@@ -2,7 +2,7 @@
 #define MEMORY_POOL_H
 
 #include "Memory/Allocators.h"
-#include "Debug/DBLAssert.h"
+#include "Debug/MGEAssert.h"
 
 class MemoryPool
 {
@@ -39,11 +39,11 @@ class MemoryPool
 
     void* allocate( std::size_t bytes )
     {
-        DBL_ASSERT( static_cast<word_t>( bytes ) <= mChunkSize, "MemoryPool %s is trying to allocate a larger chunk %u", get_name(), bytes );
+        MGE_ASSERT( static_cast<word_t>( bytes ) <= mChunkSize, "MemoryPool %s is trying to allocate a larger chunk %u", get_name(), bytes );
 
         if ( mFreeList == nullptr )
         {
-            DBL_ERROR( false, "MemoryPool %s is empty", get_name() );
+            MGE_ERROR( false, "MemoryPool %s is empty", get_name() );
             return nullptr;
         }
 
@@ -59,7 +59,7 @@ class MemoryPool
     {
         if ( p == nullptr )
         {
-            DBL_ASSERT( false, "MemoryPool %s trying to free a null pointer", get_name() );
+            MGE_ASSERT( false, "MemoryPool %s trying to free a null pointer", get_name() );
             return;
         }
 
@@ -79,7 +79,7 @@ class MemoryPool
     {
         Chunk* blockBegin{ reinterpret_cast<Chunk*>( mAlloc.allocate( static_cast<std::size_t>( mMemChunk ) ) ) };
 
-        DBL_ASSERT( blockBegin, "MemoryPool %s couldn't allocate %u ( %u * %u ) bytes", get_name(), mMemChunk, mChunkSize, mNumChunk );
+        MGE_ASSERT( blockBegin, "MemoryPool %s couldn't allocate %u ( %u * %u ) bytes", get_name(), mMemChunk, mChunkSize, mNumChunk );
 
         Chunk* chunk{ blockBegin };
 

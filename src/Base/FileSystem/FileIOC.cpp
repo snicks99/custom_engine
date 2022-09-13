@@ -1,5 +1,5 @@
 #include "FileSystem/FileIO.h"
-#include "Debug/DBLAssert.h"
+#include "Debug/MGEAssert.h"
 
 #if ENABLE_STL_FILE_SYSTEM
 
@@ -28,7 +28,7 @@ namespace FileIO
             return "ab";
         }
 
-        DBL_ERROR( false, "Invalid file open mode %u", mode );
+        MGE_ERROR( false, "Invalid file open mode %u", mode );
 
         return "";
     }
@@ -39,7 +39,7 @@ namespace FileIO
 
         FileHandle fileHandle{ fopen( filePath, cMode ) };
 
-        DBL_WARNING( fileHandle, "Can't open file %s", filePath );
+        MGE_WARNING( fileHandle, "Can't open file %s", filePath );
 
         return fileHandle;
     }
@@ -109,7 +109,7 @@ namespace FileIO
 
         if ( bytesRead != length )
         {
-            DBL_ASSERT( false, "Read %u of %u bytes", bytesRead, length );
+            MGE_ASSERT( false, "Read %u of %u bytes", bytesRead, length );
             return false;
         }
 
@@ -138,7 +138,7 @@ namespace FileIO
 
         if ( bytesWritten != length )
         {
-            DBL_ASSERT( false, "Written %u of %u bytes", bytesWritten, length );
+            MGE_ASSERT( false, "Written %u of %u bytes", bytesWritten, length );
             return false;
         }
 

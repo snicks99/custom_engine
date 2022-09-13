@@ -38,7 +38,7 @@ inline void PrintErr( const char8* cond,
                       __FUNCTION__,    \
                       __LINE__,        \
                       ##__VA_ARGS__ ); \
-            DBL_DEBUG_BREAK();         \
+            MGE_DEBUG_BREAK();         \
         }                              \
     }
 

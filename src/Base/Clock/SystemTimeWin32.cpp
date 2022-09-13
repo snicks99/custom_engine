@@ -1,7 +1,7 @@
 #include "Clock/SystemTime.h"
-#include "Debug/DBLAssert.h"
+#include "Debug/MGEAssert.h"
 
-#if DBL_PLATFORM == DBL_PLATFORM_WINDOWS
+#if MGE_PLATFORM == MGE_PLATFORM_WINDOWS
 
 static int64   sClockFrequency{ 1 };
 static float32 sClockFreqUs{ 1.0f / ( static_cast<float32>( sClockFrequency ) / SEC_AS_US ) };
@@ -9,7 +9,7 @@ static float32 sClockFreqUs{ 1.0f / ( static_cast<float32>( sClockFrequency ) / 
 void SystemTime::Init()
 {
     /** get the ticks-per-second here - niccco */
-    DBL_ASSERT( QueryPerformanceFrequency( (LARGE_INTEGER*)( &sClockFrequency ) ) );
+    MGE_ASSERT( QueryPerformanceFrequency( (LARGE_INTEGER*)( &sClockFrequency ) ) );
 
     sClockFreqUs = 1.0f / ( static_cast<float32>( sClockFrequency ) / SEC_AS_US );
 

@@ -2,6 +2,7 @@
 
 * [Requirements](#requirements)
 * [Install](#install)
+* [Credits](#credits)
   
 
 ## Requirements
@@ -52,3 +53,8 @@ Here are the instructions to make it work on your machine:
 - Restart Visual Studio and enable "Format on save option" from the Clang Power tools settings:
 
 ![Format on Save option](./images/FormatOnSave.JPG)
+
+## Credits
+
+Trinity Core
+TheCherno

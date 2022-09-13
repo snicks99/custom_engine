@@ -11,7 +11,7 @@ constexpr word_t FILE_STREAM_BUFFER_SIZE{ 4 * MEMORY_KIBIBYTE };
 
 /*
     NOTE: FileStream class is expected to be linear based read/write
-            and can't both at same time - niccco
+            and can't be both at same time - niccco
  */
 class FileStream : public Stream
 {
@@ -21,9 +21,6 @@ class FileStream : public Stream
 
     bool8 Open( const char8* filePath, uint32 mode, Disposition disposition = Disposition::NONE );
     bool8 IsOpen() const;
-
-    /** we know we can't write over PAK - niccco */
-    bool8 OpenPak( uint32 pak, const char8* filePath );
 
     /************************************************************************/
     /*                                                                      */

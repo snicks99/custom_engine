@@ -9,6 +9,7 @@
 
 #include <stdint.h>
 #include <inttypes.h>
+#include <limits>
 
 /****************************************************************************
  Separator
@@ -32,22 +33,9 @@ using float64 = double;
 using char8  = char;
 using char16 = char16_t;
 
-using bool8  = bool;
-using bool32 = uint32;
+using bool8 = bool;
 
-using HashID = uint32;
-
-#define SZFMTD "%" PRIuPTR
-#define UI64LIT(N) UINT64_C(N)
-
-
-template<typename T>
-struct dependant_false
-{
-    static constexpr bool value = false;
-};
-
-template<typename T>
-constexpr bool dependant_false_v = dependant_false<T>::value;
+#define SZFMTD       "%" PRIuPTR
+#define UI64LIT( N ) UINT64_C( N )
 
 #endif

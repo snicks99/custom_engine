@@ -4,7 +4,7 @@
 #include "Common/Types.h"
 #include "Containers/UnorderedMap.h"
 #include "Hash/String/StringID.h"
-#include "Debug/DBLAssert.h"
+#include "Debug/MGEAssert.h"
 
 #define FACTORY_PRODUCT( T, MACHINE )                                          \
     static consteval StringID GetStaticType() { return HashStringEval( #T ); } \
@@ -24,7 +24,7 @@ class Factory
         auto it{ mMachine.find( typeId ) };
         if ( it != mMachine.end() )
         {
-            DBL_ERROR( false, "Factory type %u is duplicated", typeId );
+            MGE_ERROR( false, "Factory type %u is duplicated", typeId );
             return;
         }
 
@@ -39,7 +39,7 @@ class Factory
         auto it{ mMachine.find( typeId ) };
         if ( it != mMachine.end() )
         {
-            DBL_ERROR( false, "Factory type %u is duplicated", typeId );
+            MGE_ERROR( false, "Factory type %u is duplicated", typeId );
             return;
         }
 
@@ -51,7 +51,7 @@ class Factory
         auto it{ mMachine.find( typeId ) };
         if ( it == mMachine.end() )
         {
-            DBL_ERROR( false, "Type %u not found in the factory", typeId );
+            MGE_ERROR( false, "Type %u not found in the factory", typeId );
             return nullptr;
         }
 

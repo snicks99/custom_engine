@@ -19,7 +19,7 @@ int APIENTRY WinMain( HINSTANCE hInstance,
 
     if ( app.Create( hInstance, WindowName, 0, 0, DEFAULT_SCREEN_WIDTH, DEFAULT_SCREEN_HEIGHT, WINDOW_MODE_WINDOW ) == false )
     {
-        DBL_ERROR( false, "Unable to create application" );
+        MGE_ERROR( false, "Unable to create application" );
         return S_FALSE;
     }
 

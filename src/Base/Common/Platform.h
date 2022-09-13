@@ -24,7 +24,7 @@
 #define CONSTEXPR_INLINE  constexpr inline
 #define CONSTEXPR_VIRTUAL constexpr virtual
 
-#if DBL_COMPILER == DBL_COMPILER_GNU
+#if MGE_COMPILER == MGE_COMPILER_GNU
 #    define ATTR_PRINTF( F, V ) __attribute__( ( __format__( __printf__, F, V ) ) )
 #else
 #    define ATTR_PRINTF( F, V )

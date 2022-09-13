@@ -3,7 +3,7 @@
 
 #include "Common/Platform.h"
 
-#if DBL_PLATFORM == DBL_PLATFORM_WINDOWS
+#if MGE_PLATFORM == MGE_PLATFORM_WINDOWS
 
 #    include <VersionHelpers.h>
 
