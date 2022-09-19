@@ -7,7 +7,7 @@
 #include "Debug/MGEAssert.h"
 
 #define FACTORY_PRODUCT( T, MACHINE )                                          \
-    static consteval StringID GetStaticType() { return HashStringEval( #T ); } \
+    static consteval StringID GetStaticType() { return HashStringExpr( #T ); } \
     static constexpr MACHINE* Product() { return new T{}; }
 
 template<typename T>

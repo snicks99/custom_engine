@@ -15,7 +15,7 @@ CollectSourceFiles(
 )
 
 if(USE_COREPCH)
-  set(PRIVATE_PCH_HEADER PrecompiledHeaders/dblPCH.h)
+  set(PRIVATE_PCH_HEADER PrecompiledHeaders/enginePCH.h)
 endif(USE_COREPCH)
 
 GroupSources(${CMAKE_CURRENT_SOURCE_DIR})

@@ -38,7 +38,7 @@ target_link_libraries(GlassCannon
   PRIVATE
     trinity-core-interface
   PUBLIC
-    DBL)
+    Engine)
 
 CollectIncludeDirectories(
   ${CMAKE_CURRENT_SOURCE_DIR}

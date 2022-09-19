@@ -38,4 +38,19 @@ using bool8 = bool;
 #define SZFMTD       "%" PRIuPTR
 #define UI64LIT( N ) UINT64_C( N )
 
+constexpr inline word_t INVALID_WORD{ std::numeric_limits<word_t>::max() };
+
+constexpr inline int8  INVALID_INT8{ std::numeric_limits<int8>::max() };
+constexpr inline int16 INVALID_INT16{ std::numeric_limits<int16>::max() };
+constexpr inline int32 INVALID_INT32{ std::numeric_limits<int32>::max() };
+constexpr inline int64 INVALID_INT64{ std::numeric_limits<int64>::max() };
+
+constexpr inline uint8  INVALID_UINT8{ std::numeric_limits<uint8>::max() };
+constexpr inline uint16 INVALID_UINT16{ std::numeric_limits<uint16>::max() };
+constexpr inline uint32 INVALID_UINT32{ std::numeric_limits<uint32>::max() };
+constexpr inline uint64 INVALID_UINT64{ std::numeric_limits<uint64>::max() };
+
+constexpr inline float32 INVALID_FLOAT32{ std::numeric_limits<float32>::max() };
+constexpr inline float64 INVALID_FLOAT64{ std::numeric_limits<float64>::max() };
+
 #endif

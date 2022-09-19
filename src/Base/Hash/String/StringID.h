@@ -8,97 +8,80 @@
 #include <xhash>
 #include <boost/container_hash/hash.hpp>
 
-/** use this consteval so we create compile-time StringID - niccco */
-consteval HashID MAKE_SID( const char8* str )
-{
-    return HashStringEval( str );
-}
-
 class StringID
 {
   public:
-    constexpr StringID( HashID strId = 0xFFFFFFFF )
-        : mStrId{ strId }
+    constexpr StringID( MGE_SID sid = INVALID_MGE_SID ) noexcept
+        : mSID{ sid }
     {
     }
 
-    constexpr StringID( const char8* str )
-        : mStrId{ HashStringExpr( str ) }
+    constexpr StringID( const char8* str ) noexcept
+        : mSID{ HashStringExpr( str ) }
     {
     }
 
-    StringID( StringView str )
-        : mStrId{ HashString( str.data() ) }
-    {
-    }
-
-    StringID( const String& str )
-        : mStrId{ HashString( str.c_str() ) }
+    constexpr StringID( const String& str ) noexcept
+        : mSID{ HashStringExpr( str.c_str() ) }
     {
     }
 
     /** Copy */
-    StringID( const StringID& r )
-        : mStrId{ r.GetSID() }
+    constexpr StringID( const StringID& r ) noexcept
+        : mSID{ r.GetSID() }
     {
     }
 
-    StringID& operator=( const StringID& r )
+    constexpr StringID& operator=( const StringID& r ) noexcept
     {
         SetSID( r.GetSID() );
         return *this;
     }
 
     /** Move */
-    StringID( StringID&& r ) noexcept
-        : mStrId{ r.GetSID() }
+    constexpr StringID( StringID&& r ) noexcept
+        : mSID{ r.GetSID() }
     {
-        r.SetSID( 0xFFFFFFFF );
+        r.SetSID( INVALID_MGE_SID );
     }
 
-    StringID& operator=( StringID&& r ) noexcept
+    constexpr StringID& operator=( StringID&& r ) noexcept
     {
         SetSID( r.GetSID() );
-        r.SetSID( 0xFFFFFFFF );
+        r.SetSID( INVALID_MGE_SID );
         return *this;
     }
 
     /** Other */
-    StringID& operator=( StringView r )
+    constexpr StringID& operator=( const char8* str ) noexcept
     {
-        SetSID( HashString( r.data() ) );
+        SetSID( HashStringExpr( str ) );
         return *this;
     }
 
-    StringID& operator=( const String& r )
+    constexpr StringID& operator=( const String& r ) noexcept
     {
-        SetSID( HashString( r.c_str() ) );
+        SetSID( HashStringExpr( r.c_str() ) );
         return *this;
     }
 
-    StringID& operator=( const char8* r )
-    {
-        SetSID( HashString( r ) );
-        return *this;
-    }
-
-    constexpr bool operator==( const StringID& r ) const noexcept
+    constexpr bool8 operator==( const StringID& r ) const noexcept
     {
         return GetSID() == r.GetSID();
     }
 
-    constexpr bool operator==( StringID&& r ) const noexcept
+    constexpr bool8 operator==( StringID&& r ) const noexcept
     {
         return GetSID() == r.GetSID();
     }
 
-    constexpr void   SetSID( HashID strId ) noexcept { mStrId = strId; }
-    constexpr HashID GetSID() const noexcept { return mStrId; }
+    constexpr void    SetSID( MGE_SID sid ) noexcept { mSID = sid; }
+    constexpr MGE_SID GetSID() const noexcept { return mSID; }
 
-    FORCE_INLINE operator HashID() const noexcept { return GetSID(); }
+    constexpr operator MGE_SID() const noexcept { return GetSID(); }
 
   protected:
-    HashID mStrId;
+    MGE_SID mSID;
 };
 
 template<>

@@ -2,37 +2,14 @@
 #define HASH_CRC32_H
 
 #include "Common/Platform.h"
-#include "Hash/Hash.h"
 #include "Utilities/Utils.h"
 
-CONSTEXPR_INLINE uint32 crc32_tab[256] = {
-    0x00000000,
-    0x77073096,
-    0xEE0E612C,
-    0x990951BA,
-    0x076DC419,
-    0x706AF48F,
-    0xE963A535,
-    0x9E6495A3,
-    0x0EDB8832,
-    0x79DCB8A4,
-    0xE0D5E91E,
-    0x97D2D988,
-    0x09B64C2B,
-    0x7EB17CBD,
-    0xE7B82D07,
-    0x90BF1D91,
-    0x1DB71064,
-    0x6AB020F2,
-    0xF3B97148,
-    0x84BE41DE,
-    0x1ADAD47D,
-    0x6DDDE4EB,
-    0xF4D4B551,
-    0x83D385C7,
-    0x136C9856,
-    0x646BA8C0,
-    0xFD62F97A,
+// clang-format off
+CONSTEXPR_INLINE uint32 crc32_tab[256] =
+{
+    0x00000000, 0x77073096, 0xEE0E612C, 0x990951BA, 0x076DC419, 0x706AF48F, 0xE963A535, 0x9E6495A3, 0x0EDB8832,
+    0x79DCB8A4, 0xE0D5E91E, 0x97D2D988, 0x09B64C2B, 0x7EB17CBD, 0xE7B82D07, 0x90BF1D91, 0x1DB71064, 0x6AB020F2,
+    0xF3B97148, 0x84BE41DE, 0x1ADAD47D, 0x6DDDE4EB, 0xF4D4B551, 0x83D385C7, 0x136C9856, 0x646BA8C0, 0xFD62F97A,
     0x8A65C9EC,
     0x14015C4F,
     0x63066CD9,
@@ -263,13 +240,13 @@ CONSTEXPR_INLINE uint32 crc32_tab[256] = {
     0x5A05DF1B,
     0x2D02EF8D
 };
+// clang-format on
 
 namespace CRC32
 {
-
-    constexpr HashID Hash( const void* data, word_t size )
+    constexpr uint32 Hash( const void* data, word_t size )
     {
-        HashID crc32{ 0 };
+        uint32 crc32{ 0 };
 
         if ( data )
         {
@@ -277,14 +254,14 @@ namespace CRC32
                 crc32 = ( crc32 >> 8 ) ^ crc32_tab[( crc32 ^ static_cast<const uint8*>( data )[i] ) & 0xFF];
         }
 
-        crc32 ^= 0xFFFFFFFF;
+        crc32 ^= INVALID_UINT32;
 
         return crc32;
     }
 
-    constexpr HashID HashString( const char8* str )
+    constexpr uint32 HashString( const char8* str )
     {
-        HashID crc32{ 0 };
+        uint32 crc32{ 0 };
 
         if ( str )
         {
@@ -292,26 +269,10 @@ namespace CRC32
                 crc32 = ( crc32 >> 8 ) ^ crc32_tab[( crc32 ^ cToLower( *str ) ) & 0xFF];
         }
 
-        crc32 ^= 0xFFFFFFFF;
+        crc32 ^= INVALID_UINT32;
 
         return crc32;
     }
-
-    consteval HashID HashStringEval( const char8* str )
-    {
-        HashID crc32{ 0 };
-
-        if ( str )
-        {
-            for ( ; *str; ++str )
-                crc32 = ( crc32 >> 8 ) ^ crc32_tab[( crc32 ^ cToLower( *str ) ) & 0xFF];
-        }
-
-        crc32 ^= 0xFFFFFFFF;
-
-        return crc32;
-    }
-
 };    // namespace CRC32
 
 #endif

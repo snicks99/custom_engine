@@ -4,20 +4,14 @@
 #include "Common/Platform.h"
 #include "Containers/BasicString.h"
 #include "Hash/Hash.h"
-#include "Hash/String/HashDJB2.h"
 #include "Hash/String/HashCRC32.h"
 #include "Utilities/Utils.h"
 
-constexpr HashID HashStringExpr( const char8* str )
+constexpr MGE_SID HashStringExpr( const char8* str )
 {
-    return CRC32::HashString( str );
+    return static_cast<MGE_SID>( CRC32::HashString( str ) );
 }
 
-consteval HashID HashStringEval( const char8* str )
-{
-    return HashStringExpr( str );
-}
-
-extern HashID HashString( const char8* str );
+extern MGE_SID HashString( const char8* str );
 
 #endif

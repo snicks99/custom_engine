@@ -3,9 +3,11 @@
 
 #include "Common/Platform.h"
 
-using HashID = word_t;
+using HashID  = word_t;
+using MGE_SID = uint32;
 
-CONSTEXPR_INLINE HashID INVALID_HASH_ID{ std::numeric_limits<HashID>::max() };
+CONSTEXPR_INLINE HashID  INVALID_HASH_ID{ INVALID_WORD };
+CONSTEXPR_INLINE MGE_SID INVALID_MGE_SID{ INVALID_UINT32 };
 
 #if 0
 
